@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\alex\\audio\\SimpleEQ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginEditor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\PluginEditor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginProcessor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\PluginProcessor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginEditor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\PluginEditor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 334,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 72,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PluginEditor.cpp",
+              "DocumentMoniker": "C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginEditor.cpp",
+              "RelativeDocumentMoniker": "Source\\PluginEditor.cpp",
+              "ToolTip": "C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginEditor.cpp",
+              "RelativeToolTip": "Source\\PluginEditor.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-05T18:30:51.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PluginEditor.h",
+              "DocumentMoniker": "C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginEditor.h",
+              "RelativeDocumentMoniker": "Source\\PluginEditor.h",
+              "ToolTip": "C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginEditor.h",
+              "RelativeToolTip": "Source\\PluginEditor.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T18:30:29.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PluginProcessor.h",
+              "DocumentMoniker": "C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginProcessor.h",
+              "RelativeDocumentMoniker": "Source\\PluginProcessor.h",
+              "ToolTip": "C:\\Users\\alex\\audio\\SimpleEQ\\Source\\PluginProcessor.h",
+              "RelativeToolTip": "Source\\PluginProcessor.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T18:29:56.649Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
