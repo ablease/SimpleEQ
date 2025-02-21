@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Builds\\VisualStudio2022",
+    "\\Builds\\VisualStudio2022\\x64",
+    "\\Builds\\VisualStudio2022\\x64\\Debug",
     "\\Source"
   ],
-  "SelectedNode": "\\Source\\PluginProcessor.cpp",
-  "PreviewInSolutionExplorer": false
+  "SelectedNode": "\\Builds",
+  "PreviewInSolutionExplorer": true
 }
