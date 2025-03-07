@@ -98,6 +98,34 @@ void RotarySliderWithLabels::paint(juce::Graphics& g)
 		startAngle,
 		endAngle,
 		*this);
+
+	// create a bounding box that can centre our text around our slider
+	auto center = sliderBounds.toFloat().getCentre();
+	auto radius = sliderBounds.getWidth() * 0.5f;
+
+	g.setColour(Colour(0u, 172u, 1u));
+	g.setFont(getTextHeight());
+
+	auto numChoices = labels.size();
+	for (int i = 0; i < numChoices; ++i)
+	{
+		auto pos = labels[i].pos;
+		jassert(0.f <= pos);
+		jassert(pos <= 1.f);
+
+		auto angle = jmap(pos, 0.f, 1.f, startAngle, endAngle);
+
+		// calculate the position of our text
+		auto c = center.getPointOnCircumference(radius + getTextHeight() * 0.5f + 1, angle);
+
+		Rectangle<float> r;
+		auto str = labels[i].label;
+		r.setSize(g.getCurrentFont().getStringWidth(str), getTextHeight());
+		r.setCentre(c);
+		r.setY(r.getY() + getTextHeight());
+
+		g.drawFittedText(str, r.toNearestInt(), juce::Justification::centred, 1);
+	}
 }
 
 juce::Rectangle<int> RotarySliderWithLabels::getSliderBounds() const
@@ -292,6 +320,9 @@ SimpleEQAudioProcessorEditor::SimpleEQAudioProcessorEditor(SimpleEQAudioProcesso
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
+
+	peakFreqSlider.labels.add({ 0.f, "20Hz" });
+	peakFreqSlider.labels.add({ 1.f, "20kHz" });
 
 	for (auto* comp : getComps())
 	{
