@@ -82,10 +82,11 @@ void RotarySliderWithLabels::paint(juce::Graphics& g)
 
 	auto sliderBounds = getSliderBounds();
 
-	g.setColour(Colours::red);
-	g.drawRect(getLocalBounds());
-	g.setColour(Colours::yellow);
-	g.drawRect(sliderBounds);
+	// draw bounding boxes for our components
+	//g.setColour(Colours::red);
+	//g.drawRect(getLocalBounds());
+	//g.setColour(Colours::yellow);
+	//g.drawRect(sliderBounds);
 
 	getLookAndFeel().drawRotarySlider(
 		g,
@@ -117,7 +118,38 @@ juce::Rectangle<int> RotarySliderWithLabels::getSliderBounds() const
 
 juce::String RotarySliderWithLabels::getDisplayString() const
 {
-	return juce::String(getValue());
+	if (auto* choiceParam = dynamic_cast<juce::AudioParameterChoice*>(param))
+		return choiceParam->getCurrentChoiceName();
+
+	juce::String str;
+	bool addK = false;
+
+	// if our value is greater than 999 we divide by 1000 and append a k to our display string
+	if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param))
+	{
+		float val = getValue();
+		if (val > 999.f)
+		{
+			val /= 1000.f;
+			addK = true;
+		}
+		str = juce::String(val, (addK ? 2 : 0)); // 2 decimal places if we have a k
+	}
+	else
+	{
+		jassertfalse; // this should never happen
+	}
+
+	// if we have a suffix we append a space and the suffix to our string
+	if (suffix.isNotEmpty())
+	{
+		str << " ";
+		if (addK)
+			str << "k";
+		str << suffix;
+	}
+
+	return str;
 }
 
 //==============================================================================
