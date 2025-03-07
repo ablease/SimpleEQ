@@ -29,29 +29,46 @@ void LookAndFeel::drawRotarySlider(
 	g.setColour(Colour(255u, 154u, 255u));
 	g.drawEllipse(bounds, 1.f); // draw an ellipse border
 
-	auto center = bounds.getCentre();
+	if (auto* rswl = dynamic_cast<RotarySliderWithLabels*>(&slider))
+	{
+		auto center = bounds.getCentre();
 
-	// to rotate something we must define it in a path
-	Path p;
+		// to rotate something we must define it in a path
+		Path p;
 
-	// this will be the Dial highlight or marker
-	Rectangle<float> r;
-	r.setLeft(center.getX() - 2);
-	r.setRight(center.getX() + 2);
-	r.setTop(bounds.getY());
-	r.setBottom(center.getY());
+		// this will be the Dial highlight or marker
+		Rectangle<float> r;
+		r.setLeft(center.getX() - 2);
+		r.setRight(center.getX() + 2);
+		r.setTop(bounds.getY());
+		r.setBottom(center.getY() - rswl->getTextHeight() * 1.5);
 
-	p.addRectangle(r);
+		p.addRoundedRectangle(r, 2.f);
+		jassert(rotaryStartAngle < rotaryEndAngle);
 
-	jassert(rotaryStartAngle < rotaryEndAngle);
+		auto sliderAngleInRadians = jmap(sliderPosProportional, 0.f, 1.f, rotaryStartAngle, rotaryEndAngle);
 
-	auto sliderAngleInRadians = jmap(sliderPosProportional, 0.f, 1.f, rotaryStartAngle, rotaryEndAngle);
+		// rotate the dial marker around the centre of our component
+		p.applyTransform(AffineTransform().rotated(sliderAngleInRadians, center.getX(), center.getY()));
 
-	// rotate the dial marker around the centre of our component
-	p.applyTransform(AffineTransform().rotated(sliderAngleInRadians, center.getX(), center.getY()));
+		g.fillPath(p);
 
-	g.fillPath(p);
+		g.setFont(rswl->getTextHeight());
+
+		auto text = rswl->getDisplayString();
+		auto stringWidth = g.getCurrentFont().getStringWidth(text);
+
+		r.setSize(stringWidth + 4, rswl->getTextHeight() + 2);
+		r.setCentre(bounds.getCentre());
+
+		g.setColour(Colours::black);
+		g.fillRect(r);
+
+		g.setColour(Colours::white);
+		g.drawFittedText(text, r.toNearestInt(), juce::Justification::centred, 1);
+	}
 }
+
 // we want to the values of 0 - 1 to be mapped from 7 oclock to 5 oclock in a clockwise fashion
 // 12 oclock is 0 degress in radians
 void RotarySliderWithLabels::paint(juce::Graphics& g)
@@ -96,6 +113,11 @@ juce::Rectangle<int> RotarySliderWithLabels::getSliderBounds() const
 	r.setY(2);
 
 	return r;
+}
+
+juce::String RotarySliderWithLabels::getDisplayString() const
+{
+	return juce::String(getValue());
 }
 
 //==============================================================================
