@@ -9,5 +9,5 @@ TODO:
 - [x] Create UI components for Frequency Cutoffs, Gain and Slope
 - [x] Customize UI components
 - [x] Draw frequency response curve
-- [] Specrum Analyser
+- [x] Specrum Analyser
 - [] Bypass Buttons
