@@ -316,9 +316,9 @@ void ResponseCurveComponent::resized()
 	// draw frequency as vcrtical lines
 	Array<float> freqs
 	{
-		20, 20, 40, 50, 100, 
-		200, 300, 400, 500, 1000,
-		2000, 3000, 4000, 5000, 10000,
+		20, /*30, 40,*/ 50, 100, 
+		200, /*300, 400,*/ 500, 1000,
+		2000, /*3000, 4000,*/ 5000, 10000,
 		20000
 	};
 
@@ -357,7 +357,39 @@ void ResponseCurveComponent::resized()
 		g.drawHorizontalLine(y, left, right);
 	}
 
-	g.drawRect(getAnalysisArea());
+	//g.drawRect(getAnalysisArea());
+
+	g.setColour(Colours::lightgrey);
+	const int fontHeight = 10;
+	g.setFont(fontHeight);
+
+	// loop through freq and x and draw grid at those positions
+	for (int i = 0; i < freqs.size(); ++i)
+	{
+		auto f = freqs[i];
+		auto x = xs[i];
+		// TODO we use this functionality twice, can we extract to a commmon function?
+		bool addK = false;
+		String str;
+		if (f > 999.f)
+		{
+			f /= 1000.f;
+			addK = true;
+		}
+		str << f;
+		if (addK)
+			str << "k";
+		str << "Hz";
+
+		auto textWidth = g.getCurrentFont().getStringWidth(str);
+
+		Rectangle<int> r;
+		r.setSize(textWidth, fontHeight);
+		r.setCentre(x, 0);
+		r.setY(1);
+
+		g.drawFittedText(str, r, juce::Justification::centred, 1);
+	}
 }
 
 juce::Rectangle<int> ResponseCurveComponent::getRenderArea()
